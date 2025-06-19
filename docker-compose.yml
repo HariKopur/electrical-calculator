@@ -8,7 +8,6 @@ services:
       - .:/app
     environment:
       - DISPLAY=${DISPLAY}
-    network_mode: host
     depends_on:
       - mysql
     stdin_open: true
@@ -17,6 +16,7 @@ services:
   mysql:
     image: mysql:8.0
     container_name: ee_calculator_db
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: electrical_calculator
