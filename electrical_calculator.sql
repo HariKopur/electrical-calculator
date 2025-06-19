@@ -1,12 +1,12 @@
 CREATE DATABASE IF NOT EXISTS electrical_calculator;
 USE electrical_calculator;
 
-CREATE TABLE calculation_category (
+CREATE TABLE IF NOT EXISTS calculation_category (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
     category_name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE history (
+CREATE TABLE IF NOT EXISTS history (
     history_id INT AUTO_INCREMENT PRIMARY KEY,
     calculation_type VARCHAR(255) NOT NULL,
     voltage DECIMAL(10, 2),
@@ -25,8 +25,7 @@ CREATE TABLE history (
     FOREIGN KEY (category_id) REFERENCES calculation_category(category_id)
 );
 
--- Create the saved_calculation table
-CREATE TABLE saved_calculation (
+CREATE TABLE IF NOT EXISTS saved_calculation (
     saved_id INT AUTO_INCREMENT PRIMARY KEY,
     history_id INT NOT NULL,
     saved_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
